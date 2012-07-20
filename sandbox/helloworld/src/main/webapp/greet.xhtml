@@ -13,7 +13,7 @@
             <h:inputText id="username" value="#{greetController.username}" />
             <h:message for="username" />
          </h:panelGrid>
-         <h:commandButton id="greet" value="Greet!"
+         <h:commandButton id="greet" value="Submit"
             action="#{greetController.greet}" />
       </h:form>
       <h:outputText value="#{greetController.greeting}" rendered="#{not empty greetController.greeting}"/>
