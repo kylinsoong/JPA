@@ -7,18 +7,25 @@
 <ui:composition template="template.xhtml">
    <ui:define name="content">
       <h:messages />
-      <h:form id="greetForm">
+      <h:form>
          <h:panelGrid columns="3">
             <h:outputLabel for="username">Enter username:</h:outputLabel>
-            <h:inputText id="username" value="#{greetController.username}" />
+            <h:inputText id="username" value="#{newUser.username}" />
             <h:message for="username" />
+
+            <h:outputLabel for="firstName">Enter first name:</h:outputLabel>
+            <h:inputText id="firstName" value="#{newUser.firstName}" />
+            <h:message for="firstName" />
+
+            <h:outputLabel for="lastName">Enter last name:</h:outputLabel>
+            <h:inputText id="lastName" value="#{newUser.lastName}" />
+            <h:message for="lastName" />
+
          </h:panelGrid>
-         <h:commandButton id="greet" value="Submit"
-            action="#{greetController.greet}" />
+         <h:commandButton action="#{createController.create}"
+            value="Add User" />
       </h:form>
-      <h:outputText value="#{greetController.greeting}" rendered="#{not empty greetController.greeting}"/>
-      <br />
-      <h:link outcome="/create.xhtml" value="Add a new user" />
+      <h:link outcome="/helloworld.xhtml">Greet a user!</h:link>
    </ui:define>
 </ui:composition>
 </html>
