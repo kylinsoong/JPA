@@ -1,5 +1,7 @@
 package com.kylin.jpa.helloworld.service;
 
+import java.util.List;
+
 import javax.ejb.Stateful;
 import javax.enterprise.inject.Alternative;
 import javax.inject.Inject;
@@ -32,6 +34,16 @@ public class UserDaoSession implements UserDao {
 		ts.begin();
 		em.persist(user);
 		ts.commit();
+	}
+
+	@Override
+	public List<User> getUsers() {
+		try {
+			Query query = em.createQuery("from User");
+            return query.getResultList();
+	      } catch (NoResultException e) {
+	         return null;
+	      }
 	}
 
 }

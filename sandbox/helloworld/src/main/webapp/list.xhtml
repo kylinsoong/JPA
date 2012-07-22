@@ -7,24 +7,15 @@
 <ui:composition template="template.xhtml">
    <ui:define name="content">
       <h:messages />
-      <h:form>
-         <h:panelGrid columns="3">
-            <h:outputLabel for="username">Enter username:</h:outputLabel>
-            <h:inputText id="username" value="#{newUser.username}" />
-            <h:message for="username" />
-
-            <h:outputLabel for="firstName">Enter first name:</h:outputLabel>
-            <h:inputText id="firstName" value="#{newUser.firstName}" />
-            <h:message for="firstName" />
-
-            <h:outputLabel for="lastName">Enter last name:</h:outputLabel>
-            <h:inputText id="lastName" value="#{newUser.lastName}" />
-            <h:message for="lastName" />
-
-         </h:panelGrid>
-         <h:commandButton action="#{createController.create}"
-            value="Add User" />
-      </h:form>
+		<h:form>
+		<h:dataTable rendered= "true" border= "1" id= "listController" value= "#{listController.results}" var= "item">
+		<h:column>
+		<h:outputText value= "#{item}"/>
+		</h:column>
+		</h:dataTable>
+		<h:commandButton value= "List Users" action= "#{listController.getUsers}"/>
+		</h:form> 
+      <br/><br/>
       <h:link outcome="/helloworld.xhtml">Greet a user!</h:link>
    </ui:define>
 </ui:composition>

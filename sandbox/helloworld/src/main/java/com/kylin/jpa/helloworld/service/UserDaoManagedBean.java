@@ -1,5 +1,7 @@
 package com.kylin.jpa.helloworld.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -58,4 +60,28 @@ public class UserDaoManagedBean implements UserDao {
          throw new RuntimeException(e);
       }
    }
+
+	@Override
+	public List<User> getUsers() {
+		 try {
+	         try {
+	            utx.begin();
+	            try {
+	               Query query = em.createQuery("from User");
+	               return query.getResultList();
+	            } catch (NoResultException e) {
+	               return null;
+	            }
+	         } finally {
+	            utx.commit();
+	         }
+	      } catch (Exception e) {
+	         try {
+	            utx.rollback();
+	         } catch (SystemException se) {
+	            throw new RuntimeException(se);
+	         }
+	         throw new RuntimeException(e);
+	      }
+	}
 }
