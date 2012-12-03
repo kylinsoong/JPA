@@ -1,0 +1,40 @@
+What's this
+-----------
+We do the following test:
+
+* 配置数据库 datasource, 在 JBOSS_HOME/server/$PROFILE/deploy 下部署 oracle.dx.xml
+----
+<datasources>
+  <local-tx-datasource>
+    <jndi-name>OracleDS</jndi-name>
+    <connection-url>jdbc:oracle:thin:@10.66.129.154:1521:JBOSS</connection-url>
+...
+----
+
+                      |
+                     \|/
+
+* 配置 JPA persistence.xml，jta-data-source 指向上面步骤 1 中的 JNDI
+----
+...
+<persistence-unit name="primary">
+      <jta-data-source>java:/OracleDS</jta-data-source>
+      <properties>
+         <property name="hibernate.hbm2ddl.auto" value="create-drop" />
+         <property name="hibernate.show_sql" value="true" />
+      </properties>
+   </persistence-unit>
+</persistence>
+----
+
+                      |
+                     \|/
+
+* 在 JBoss 容器中获取 connection
+----
+@PersistenceContext
+protected EntityManager em;
+----
+Print the connection info.
+
+NOTE: this logic implemented by a EJB session bean. we need use EJB Client invoke remote service, EJB Client `com.kylin.jpa.oracleconnection.client.LogServiceClient`
