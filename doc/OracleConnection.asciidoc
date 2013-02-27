@@ -3,6 +3,7 @@ What's this
 We do the following test:
 
 * 配置数据库 datasource, 在 JBOSS_HOME/server/$PROFILE/deploy 下部署 oracle.dx.xml
+
 ----
 <datasources>
   <local-tx-datasource>
