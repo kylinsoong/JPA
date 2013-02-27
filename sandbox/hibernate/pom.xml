@@ -19,6 +19,8 @@
 
     <modules>
         <module>po</module>
+	<module>service</module>
+        <module>ear</module>
     </modules>
 
 </project>
