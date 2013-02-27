@@ -36,6 +36,12 @@
          <version>${project.version}</version>
 	     <scope>provided</scope>
       </dependency>
+      <dependency>
+       <groupId>log4j</groupId>
+       <artifactId>log4j</artifactId>
+       <version>1.2.16</version>
+       <scope>provided</scope>
+      </dependency>
 
         <!-- Declare the APIs we depend on and need for compilation. All of 
             them are provided by JBoss AS 7 -->

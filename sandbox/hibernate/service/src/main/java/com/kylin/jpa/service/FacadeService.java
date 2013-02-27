@@ -1,13 +1,21 @@
 package com.kylin.jpa.service;
 
-import javax.ejb.Stateless;
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
+import java.util.List;
 
-@Stateless
-public class FacadeService {
+import com.kylin.jpa.po.User;
 
-	@Inject
-	private EntityManager em;
+public interface FacadeService {
+	
+	public void addUser(User user);
+	public void addUsers(List<User> users);
+	
+	public List<User> getUsers();
+	public User getUser(long id);
+	
+	public void removeUser(long id);
+	
+	public void updateUser(User user);
+	
+	public String ping();
 
 }

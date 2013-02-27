@@ -21,6 +21,7 @@
         <module>po</module>
 	<module>service</module>
         <module>ear</module>
+        <module>client</module>
     </modules>
 
 </project>
