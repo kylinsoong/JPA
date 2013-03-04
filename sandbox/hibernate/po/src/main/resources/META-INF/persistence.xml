@@ -13,6 +13,13 @@
          <!-- Properties for Hibernate -->
          <property name="hibernate.hbm2ddl.auto" value="create-drop" />
          <property name="hibernate.show_sql" value="true" />
+         
+         <!-- Infinispan as hibernate second level cache configuration
+         <property name="hibernate.cache.use_second_level_cache" value="true" />
+		 <property name="hibernate.cache.use_query_cache" value="true" />
+		 <property name="hibernate.cache.infinispan.cachemanager" value="java:jboss/infinispan/hibernate"/>
+		 <property name="hibernate.cache.region.factory_class" value="org.hibernate.cache.infinispan.JndiInfinispanRegionFactory"/> 
+		 -->
       </properties>
    </persistence-unit>
 </persistence>
