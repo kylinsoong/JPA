@@ -5,17 +5,24 @@
 <datasources xmlns="http://www.jboss.org/ironjacamar/schema"
    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
    xsi:schemaLocation="http://www.jboss.org/ironjacamar/schema http://docs.jboss.org/ironjacamar/schema/datasources_1_0.xsd">
-   <!-- The datasource is bound into JNDI at this location. We reference 
-      this in META-INF/persistence.xml -->
-   <datasource jndi-name="java:jboss/datasources/JPADemoDS"
-      pool-name="jpa-demo-pool" enabled="true"
-      use-java-context="true">
+   <!-- The datasource is bound into JNDI at this location. We reference this in META-INF/persistence.xml -->
+   <!--H2 
+   <datasource jndi-name="java:jboss/datasources/JPADemoDS" pool-name="jpa-demo-pool" enabled="true" use-java-context="true">
       <connection-url>jdbc:h2:mem:kitchensink-ear-quickstart;DB_CLOSE_ON_EXIT=FALSE;DB_CLOSE_DELAY=-1</connection-url>
       <driver>h2</driver>
       <security>
          <user-name>sa</user-name>
          <password>sa</password>
       </security>
-   </datasource>
+   </datasource> 
+   -->
+   <datasource jndi-name="java:jboss/datasources/JPADemoDS" pool-name="JPADemoPool">
+      <connection-url>jdbc:oracle:thin:@10.66.192.144:1521:JBOSS</connection-url>
+      <driver>oracle</driver>
+      <security>
+         <user-name>demo_user</user-name>
+         <password>soong</password>
+      </security>
+   </datasource> 
 </datasources>
  

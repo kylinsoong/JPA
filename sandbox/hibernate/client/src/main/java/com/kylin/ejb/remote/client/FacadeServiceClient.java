@@ -30,7 +30,8 @@ public class FacadeServiceClient extends ClientBase {
 
 	public static void main(String[] args) throws Exception {
 		FacadeServiceClient client = new FacadeServiceClient();
-		client.test();
+		for (int i = 0; i < 100; i++)
+			client.test();
 		// System.out.println(STR_JNDI);
 	}
 

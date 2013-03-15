@@ -1,7 +1,6 @@
 package com.kylin.ejb.remote.client;
 
 import java.util.Hashtable;
-import java.util.Properties;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;

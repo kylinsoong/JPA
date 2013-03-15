@@ -9,15 +9,24 @@
       <!-- If you are running in a production environment, add a managed data source, this example data source is just for development and testing! -->
       <!-- The datasource is deployed as <EAR>/META-INF/JPADemo-ds.xml, you can find it in the source at ear/src/main/application/META-INF/jpa-demo-ds.xml -->
       <jta-data-source>java:jboss/datasources/JPADemoDS</jta-data-source>
+      
+      <!-- By default, entities are elected for second-level cache if annotated with @Cacheable. You can however:
+      		ALL: force caching for all entities
+      		NONE: disable caching for all entities (useful to take second-level cache out of the equation)
+      		ENABLE_SELECTIVE (default): enable caching when explicitly marked
+      		DISABLE_SELECTIVE: enable caching unless explicitly marked as @Cacheable(false) (not recommended)
+       -->
+      <shared-cache-mode>ALL</shared-cache-mode>
       <properties>
          <!-- Properties for Hibernate -->
+         <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect"/>      
          <property name="hibernate.hbm2ddl.auto" value="create-drop" />
          <property name="hibernate.show_sql" value="true" />
          
-         <!-- Infinispan as hibernate second level cache configuration
+         <!-- Infinispan as hibernate second level cache configuration -->
          <property name="hibernate.cache.use_second_level_cache" value="true" />
 		 <property name="hibernate.cache.use_query_cache" value="true" />
-		 <property name="hibernate.cache.infinispan.cachemanager" value="java:jboss/infinispan/hibernate"/>
+		 <!--<property name="hibernate.cache.infinispan.cachemanager" value="java:jboss/infinispan/hibernate"/>
 		 <property name="hibernate.cache.region.factory_class" value="org.hibernate.cache.infinispan.JndiInfinispanRegionFactory"/> 
 		 -->
       </properties>

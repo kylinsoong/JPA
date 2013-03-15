@@ -1,0 +1,54 @@
+1. 方案简介与目的
+
+
+
+2. 方案配置
+2.1 JBoss 端配置
+1. 添加Oracle数据库驱动模块到JBoss
+在JBOSS_HOME/modules/目录下创建com/oracle/main目录，将Oracle驱动jari（ojdbc6.jar）拷贝到此目录下，并同在此目录下创建module.xml文件，添加内容如下：
+<?xml version="1.0" encoding="UTF-8"?>
+<module xmlns="urn:jboss:module:1.1" name="com.oracle">
+    <resources>
+        <resource-root path="ojdbc6.jar"/>
+    </resources>
+    <dependencies>
+        <module name="javax.api"/>
+        <module name="javax.transaction.api"/>
+    </dependencies>
+</module>
+
+2 添加驱动配置到JBoss服务器配置文件
+编辑JBOSS_HOME/standalone/configuration/standalone-ha.xml文件，在<subsystem xmlns="urn:jboss:domain:datasources处datasources，drivers中添加如下内容：
+<driver name="oracle" module="com.oracle">
+    <xa-datasource-class>oracle.jdbc.xa.client.OracleXADataSource</xa-datasource-class>
+</driver>
+
+2.2 Oracle数据库端的配置
+使用DBA用户连接到Oracle数据库控制台，创建demo_user/soong，并分配相应的权限，如下：
+sqlplus / as sysdba
+create tablespace TESTSPACE datafile '/oracle/oradata/TESTSPACE.DBF' size 100M
+create user demo_user identified by soong default tablespace TESTSPACE;
+grant connect,resource,dba to demo_user;
+
+2.3 案例端配置
+编辑cd ear/src/main/application/META-INF/JPADemo-ds.xml，修改datasource内容如下所示：
+<datasource jndi-name="java:jboss/datasources/JPADemoDS" pool-name="JPADemoPool">
+      <connection-url>jdbc:oracle:thin:@10.66.192.144:1521:JBOSS</connection-url>
+      <driver>oracle</driver>
+      <security>
+         <user-name>demo_user</user-name>
+         <password>soong</password>
+      </security>
+</datasource>
+
+编辑po/src/main/resources/META-INF/persistence.xml，添加persistence-unit内容如下所示：
+<persistence-unit name="primary">
+      <jta-data-source>java:jboss/datasources/JPADemoDS</jta-data-source>
+      <shared-cache-mode>ALL</shared-cache-mode>
+      <properties>
+         <property name="hibernate.hbm2ddl.auto" value="create-drop" />
+         <property name="hibernate.show_sql" value="true" />
+         <property name="hibernate.cache.use_second_level_cache" value="true" />
+         <property name="hibernate.cache.use_query_cache" value="true" />
+      </properties>
+</persistence-unit>
