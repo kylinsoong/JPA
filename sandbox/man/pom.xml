@@ -3,12 +3,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.kylin.jpa</groupId>
-    <artifactId>jpa</artifactId>
+    <groupId>com.kylin.man</groupId>
+    <artifactId>man-parent</artifactId>
     <version>1.0</version>
     <name>Parent</name>
-    <description>Parent of JPA Project</description>
-    <packaging>pom</packaging>
+    <description>Parent of Man Demo</description>
+    <packaging>pom</packaging>   
+
 
     <url>https://github.com/kylinsoong</url>
 
@@ -17,10 +18,11 @@
     </properties>
 
     <modules>
-        <module>helloworld</module>
-        <module>oracleConnection</module>
-        <module>man</module>
-	<module>pool</module>
+	<module>po</module>
+	<module>service</module>
+	<module>ui</module>
+        <module>ear</module>
+        <module>client</module>
     </modules>
 
 </project>

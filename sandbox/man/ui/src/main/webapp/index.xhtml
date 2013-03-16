@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    template="/WEB-INF/templates/default.xhtml">
+    <ui:define name="content">
+        <h1>Man Demo</h1>
+
+        <h2>Members</h2>
+        <h:panelGroup rendered="#{empty members}">
+            <em>No members.</em>
+        </h:panelGroup>
+        <h:dataTable var="_man" value="#{mans}" rendered="#{not empty members}" styleClass="simpletablestyle">
+            <h:column>
+                <f:facet name="header">Id</f:facet>
+                #{_man.id}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Name</f:facet>
+                #{_man.name}
+            </h:column>
+            <h:column>
+            <f:facet name="header">Create Date</f:facet>
+               <h:outputText value="#{_man.createdDate}">
+                <f:convertDateTime type="date" pattern="dd/MM/yyyy hh:mm:ss"/>
+                 </h:outputText>
+            </h:column>
+        </h:dataTable>
+    </ui:define>
+</ui:composition>
