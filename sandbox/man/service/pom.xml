@@ -42,6 +42,12 @@
        <version>1.2.16</version>
        <scope>provided</scope>
       </dependency>
+      <dependency>
+                <groupId>org.jboss.ejb3</groupId>
+                <artifactId>jboss-ejb3-ext-api</artifactId>
+                <version>2.0.0-beta-2</version>
+                <scope>provided</scope>
+      </dependency>
 
         <!-- Declare the APIs we depend on and need for compilation. All of 
             them are provided by JBoss AS 7 -->

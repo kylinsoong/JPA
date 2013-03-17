@@ -9,5 +9,8 @@
         <dependent-module archiveName="man-po-1.0.jar" deploy-path="/lib" handle="module:/resource/man-po/man-po">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="man-ui-1.0.war" deploy-path="/" handle="module:/resource/man-ui/man-ui">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
     </wb-module>
 </project-modules>
