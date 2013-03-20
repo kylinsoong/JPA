@@ -16,8 +16,7 @@ import org.jboss.ejb3.annotation.Clustered;
 @Remote(StatefulService.class)
 public class StatefulSession implements StatefulService {
 	
-//	@Inject
-//	private Logger log;
+	private static final Logger log = Logger.getLogger(StatefulSession.class);
 	
 	AtomicLong value = new AtomicLong();
 	
@@ -27,7 +26,7 @@ public class StatefulSession implements StatefulService {
 		
 		values.add(value.getAndIncrement());
 		
-		System.out.println("Current Values: " + values);
+		log.info("Current Values: " + values);
 	}
 
 }

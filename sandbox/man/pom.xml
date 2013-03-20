@@ -23,6 +23,7 @@
 	<module>ui</module>
         <module>ear</module>
         <module>client</module>
+	<module>sql</module>
     </modules>
 
 </project>

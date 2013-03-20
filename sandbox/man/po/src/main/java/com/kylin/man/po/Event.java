@@ -54,7 +54,7 @@ public class Event implements Serializable{
 			targetEntity = com.kylin.man.po.Property.class,
 			fetch=FetchType.LAZY,
 			cascade = { CascadeType.ALL })
-	@JoinTable(name="k_event_property", 
+	@JoinTable(name="m_event_property", 
 			joinColumns = @JoinColumn(name = "EVENT_ID"), 
 			inverseJoinColumns = @JoinColumn(name = "PROPERTY_ID"))
 	@XmlElement(name = "properties")

@@ -61,7 +61,7 @@ public class Man implements Serializable{
 			targetEntity = com.kylin.man.po.Event.class,
 			fetch=FetchType.LAZY,
 			cascade = { CascadeType.ALL })
-	@JoinTable(name="k_user_event", 
+	@JoinTable(name="m_man_event", 
 			joinColumns = @JoinColumn(name = "USER_ID"), 
 			inverseJoinColumns = @JoinColumn(name = "EVENT_ID"))
 	@XmlElement(name = "event")
@@ -77,7 +77,7 @@ public class Man implements Serializable{
 			targetEntity = com.kylin.man.po.Friend.class,
 			fetch=FetchType.LAZY,
 			cascade = { CascadeType.ALL })
-	@JoinTable(name="k_user_friend", 
+	@JoinTable(name="m_man_friend", 
 			joinColumns = @JoinColumn(name = "USER_ID"), 
 			inverseJoinColumns = @JoinColumn(name = "FRIEND_ID"))
 	@XmlElement(name = "friend")

@@ -1,0 +1,5 @@
+1. build project
+	mvn clean dependency:copy-dependencies install
+
+2. export schema
+	java -cp target/dependency/*:target/man-sql-1.0.jar com.kylin.man.sql.SQLSchemaExport

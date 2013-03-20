@@ -4,8 +4,8 @@ import java.util.List;
 
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
-import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 import org.apache.log4j.Logger;
 
@@ -15,11 +15,10 @@ import com.kylin.man.po.Man;
 @Remote(FacadeService.class)
 public class FacadeSession implements FacadeService{
 
-	@Inject
-	private EntityManager em;
+	@PersistenceContext(name="com.kylin.man.po")
+    private EntityManager em;
 	
-	@Inject
-	private Logger log;
+	private static final Logger log = Logger.getLogger(FacadeSession.class);
 
 	public void addMan(Man man) {
 		

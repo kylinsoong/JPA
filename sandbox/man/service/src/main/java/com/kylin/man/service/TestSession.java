@@ -2,7 +2,6 @@ package com.kylin.man.service;
 
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
-import javax.inject.Inject;
 
 import org.apache.log4j.Logger;
 
@@ -12,8 +11,7 @@ import com.kylin.man.po.util.POUtil;
 @Remote(TestService.class)
 public class TestSession implements TestService {
 	
-	@Inject
-	private Logger log;
+	private static final Logger log = Logger.getLogger(TestSession.class);
 
 	public void jaxbTest() {
 		log.info(POUtil.convertToString(POUtil.newMan()));

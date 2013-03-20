@@ -53,7 +53,7 @@ public class Pet implements Serializable{
 			targetEntity = com.kylin.man.po.Property.class,
 			fetch=FetchType.LAZY,
 			cascade = { CascadeType.ALL })
-	@JoinTable(name="k_pet_property", 
+	@JoinTable(name="m_pet_property", 
 			joinColumns = @JoinColumn(name = "EVENT_ID"), 
 			inverseJoinColumns = @JoinColumn(name = "PROPERTY_ID"))
 	@XmlElement(name = "property")
