@@ -21,6 +21,7 @@
         <module>oracleConnection</module>
         <module>man</module>
 	<module>pool</module>
+	<module>encoding</module>
     </modules>
 
 </project>
