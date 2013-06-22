@@ -1,0 +1,28 @@
+Use twiddle monitor connection pool
+-----------------------------------
+
+* get ConnectionCount
+----
+./twiddle.sh -s localhost:1099 -u admin -p admin get "jboss.jca:name=MySqlDS,service=ManagedConnectionPool" ConnectionCount
+----
+
+* get AvailableConnectionCount
+----
+./twiddle.sh -s localhost:1099 -u admin -p admin get "jboss.jca:name=MySqlDS,service=ManagedConnectionPool" AvailableConnectionCount
+----
+
+* get ConnectionDestroyedCount
+----
+./twiddle.sh -s localhost:1099 -u admin -p admin get "jboss.jca:name=MySqlDS,service=ManagedConnectionPool" ConnectionDestroyedCount
+----
+
+* get InUseConnectionCount
+----
+./twiddle.sh -s localhost:1099 -u admin -p admin get "jboss.jca:name=MySqlDS,service=ManagedConnectionPool" InUseConnectionCount
+----
+
+
+JBoss JCA Test
+--------------
+
+link:no-managedConnections.asciidoc[javax.resource.ResourceException: No ManagedConnections available within configured blocking timeout ( 30000 [ms] )] 
