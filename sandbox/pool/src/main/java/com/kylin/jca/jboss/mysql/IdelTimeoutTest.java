@@ -21,7 +21,7 @@ public class IdelTimeoutTest {
 						Context ctx = new InitialContext();
 						DataSource ds = (DataSource) ctx.lookup("MySqlDS");
 						
-						for (int i = 0 ; i < 1000 ; i ++) {
+						for (int i = 0 ; i < 10; i ++) {
 							Connection conn = ds.getConnection();
 							System.out.println(Thread.currentThread().getName() + " Create connection " + (i + 1) +" " + conn);
 							conn.close();

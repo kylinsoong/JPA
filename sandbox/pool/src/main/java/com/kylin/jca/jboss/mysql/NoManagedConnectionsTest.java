@@ -13,7 +13,7 @@ public class NoManagedConnectionsTest {
 	public static void main(String[] args) throws NamingException, SQLException, InterruptedException {
 
 		Context ctx = new InitialContext();
-		DataSource ds = (DataSource) ctx.lookup("MySqlDS");
+		DataSource ds = (DataSource) ctx.lookup("MySqlDS2");
 		Connection conn = ds.getConnection();
 		System.out.println("Get connection from pool " + conn);
 		Thread.sleep(100 * 1000);
