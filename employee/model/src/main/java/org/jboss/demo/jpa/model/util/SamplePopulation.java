@@ -1,11 +1,13 @@
 package org.jboss.demo.jpa.model.util;
 
+import java.util.Arrays;
 import java.util.Random;
 
 import javax.persistence.EntityManager;
 
 import org.jboss.demo.jpa.model.Address;
 import org.jboss.demo.jpa.model.Employee;
+import org.jboss.demo.jpa.model.EmploymentPeriod;
 import org.jboss.demo.jpa.model.Gender;
 
 /**
@@ -50,6 +52,13 @@ public class SamplePopulation {
         emp.setLastName(LAST_NAMES[r.nextInt(LAST_NAMES.length)]);
         emp.addPhoneNumber("HOME", "111", "5552222");
         emp.addPhoneNumber("WORK", "222", "5552222");
+        emp.setAddress(new Address("BJ", "CNA", "BJ", "100020", "DDQ"));
+        emp.setResponsibilities(Arrays.asList(new String[]{"JBoss Data Virtualization Dev", "Blog"}));
+        emp.setSalary(300000);
+        EmploymentPeriod peroid = new EmploymentPeriod();
+        peroid.setStartDate(2008, 3, 5);
+        peroid.setEndDate(2018, 3, 6);
+        emp.setPeriod(peroid);
 
         return emp;
     }

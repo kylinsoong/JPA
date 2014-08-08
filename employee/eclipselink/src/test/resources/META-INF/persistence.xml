@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<persistence version="2.0"
+   xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="
+        http://java.sun.com/xml/ns/persistence
+        http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+   <persistence-unit name="org.jboss.demo.jpa.model"  transaction-type="RESOURCE_LOCAL">
+   	  
+      <class>org.jboss.demo.jpa.model.Address</class>
+      <class>org.jboss.demo.jpa.model.Employee</class>
+      <class>org.jboss.demo.jpa.model.EmploymentPeriod</class>
+      <class>org.jboss.demo.jpa.model.PhoneNumber</class>
+      <class>org.jboss.demo.jpa.model.Gender</class>
+      
+      <properties>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/testdb" />
+      <property name="javax.persistence.jdbc.user" value="jdv_user" />
+      <property name="javax.persistence.jdbc.password" value="jdv_pass" />
+
+      <!-- EclipseLink should create the database schema automatically -->
+      <property name="eclipselink.ddl-generation" value="create-tables" />
+      <property name="eclipselink.ddl-generation.output-mode" value="database" />
+    </properties>
+      
+   </persistence-unit>
+</persistence>

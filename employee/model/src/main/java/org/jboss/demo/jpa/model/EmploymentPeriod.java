@@ -10,9 +10,9 @@ import javax.persistence.Temporal;
 @Embeddable
 public class EmploymentPeriod {
         
-        @Temporal(DATE)
+	@Temporal(DATE)
 	private Calendar startDate;
-        @Temporal(DATE)
+	@Temporal(DATE)
 	private Calendar endDate;
 
 	public Calendar getStartDate() {
@@ -43,5 +43,11 @@ public class EmploymentPeriod {
 			setEndDate(Calendar.getInstance());
 		}
 		getEndDate().set(year, month, date);
+	}
+
+	@Override
+	public String toString() {
+		return "[startDate=" + startDate + ", endDate="
+				+ endDate + "]";
 	}
 }

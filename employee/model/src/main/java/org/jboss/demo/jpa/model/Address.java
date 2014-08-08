@@ -7,15 +7,16 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 import javax.persistence.Version;
 
 @Entity
+@Table(name = "ADDRESS")
 public class Address {
+	
     @Id
+    @GeneratedValue
     @Column(name = "ADDRESS_ID")
-    @GeneratedValue(generator="ADDR_SEQ")
-    @SequenceGenerator(name="ADDR_SEQ")
     private int id;
 
     @Basic
@@ -105,4 +106,10 @@ public class Address {
     public void setVersion(long version) {
         this.version = version;
     }
+
+	public String toString() {
+		return "[city=" + city + ", country=" + country + ", province="
+				+ province + ", postalCode=" + postalCode + ", street="
+				+ street + "]";
+	}
 }

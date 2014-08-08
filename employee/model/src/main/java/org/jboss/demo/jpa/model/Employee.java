@@ -22,15 +22,17 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SecondaryTable;
+import javax.persistence.Table;
 import javax.persistence.Version;
 
 @Entity
+@Table(name = "EMPLOYEE")
 @SecondaryTable(name = "SALARY")
 @NamedQueries({ 
 	@NamedQuery(name = "Employee.findAll", query = "SELECT e FROM Employee e ORDER BY e.id"),
-	@NamedQuery(name = "Employee.findByName", query = "SELECT e FROM Employee e WHERE e.firstName LIKE :firstName AND e.lastName LIKE :lastName"),
+	@NamedQuery(name = "Employee.findByName", query = "SELECT e FROM Employee e WHERE e.firstName = 'Jacob'"),
 	@NamedQuery(name = "Employee.count", query = "SELECT COUNT(e) FROM Employee e"),
-	@NamedQuery(name = "Employee.countByName", query = "SELECT COUNT(e) FROM Employee e WHERE e.firstName LIKE :firstName AND e.lastName LIKE :lastName")})
+	@NamedQuery(name = "Employee.address", query = "SELECT a FROM Address a")})
 public class Employee {
 
     @Id
@@ -223,7 +225,13 @@ public class Employee {
         getResponsibilities().remove(responsibility);
     }
 
-    public String toString() {
-        return "Employee(" + getId() + ": " + getLastName() + ", " + getFirstName() + ")";
-    }
+	@Override
+	public String toString() {
+		return "[firstName=" + firstName + ", gender=" + gender
+				+ ", lastName=" + lastName + ", salary=" + salary + "]";
+	}
+
+	
+
+    
 }

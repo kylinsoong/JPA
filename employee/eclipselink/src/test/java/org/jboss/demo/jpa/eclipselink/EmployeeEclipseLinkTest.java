@@ -8,45 +8,21 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
 import org.jboss.demo.jpa.model.util.SamplePopulation;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
-public class EmployeeEclipseLink {
+public class EmployeeEclipseLinkTest {
 
-	public static void main(String[] args) {
+	static EntityManagerFactory factory;
 
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("org.jboss.demo.jpa.model");
-		
-		try {
-			createNewEmployees(factory);
-			executeNamedQuery(factory);
-		} finally {
-			factory.close();
-		}
+	@BeforeClass 
+	public static void init() {
+		factory = Persistence.createEntityManagerFactory("org.jboss.demo.jpa.model");
 	}
-
-	private static void executeNamedQuery(EntityManagerFactory factory) {
-		
-		EntityManager em = factory.createEntityManager();
-		
-		try {
-			prompt("Employee.findAll", em.createNamedQuery("Employee.findAll").getResultList());
-			prompt("Employee.findByName", em.createNamedQuery("Employee.findByName").getResultList());
-			prompt("Employee.count", em.createNamedQuery("Employee.count").getResultList());
-			prompt("Employee.address", em.createNamedQuery("Employee.address").getResultList());
-		} finally {
-			em.close();
-		}
-		
-	}
-
-	private static void prompt(String string, List resultList) {
-		System.out.println();
-		System.out.println("JPA NamedQuery " + string);
-		for(Object obj : resultList){
-			System.out.println(obj);
-		}
-	}
-
-	private static void createNewEmployees(EntityManagerFactory factory) {
+	
+	@Test
+	public void createNewEmployees() {
 		
 		System.out.println("create 3 Employees");
 		
@@ -62,6 +38,35 @@ public class EmployeeEclipseLink {
 		} finally {
 			em.close();
 		}
+		
+		executeNamedQuery();
+	}
+	
+	private void executeNamedQuery() {
+		
+		EntityManager em = factory.createEntityManager();
+		
+		try {
+			prompt("Employee.findAll", em.createNamedQuery("Employee.findAll").getResultList());
+			prompt("Employee.findByName", em.createNamedQuery("Employee.findByName").getResultList());
+			prompt("Employee.count", em.createNamedQuery("Employee.count").getResultList());
+			prompt("Employee.address", em.createNamedQuery("Employee.address").getResultList());
+		} finally {
+			em.close();
+		}
+		
 	}
 
+	private void prompt(String string, List resultList) {
+		System.out.println();
+		System.out.println("JPA NamedQuery " + string);
+		for(Object obj : resultList){
+			System.out.println(obj);
+		}
+	}
+
+	@AfterClass 
+	public static void destory() {
+		factory.close();
+	}
 }
