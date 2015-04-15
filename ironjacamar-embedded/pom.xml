@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>org.jboss.jca</groupId>
+	<artifactId>ironjacamar-embedded-example</artifactId>
+	<version>1.0</version>
+	<packaging>jar</packaging>
+	<name>ironjacamar Embedded Test</name>
+	<description>ironjacamar Embedded Test</description>
+
+	<url>https://github.com/kylinsoong</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<teiid.version>8.11.0.Alpha2-SNAPSHOT</teiid.version>
+	</properties>
+
+
+	<dependencies>
+	<!--  
+		<dependency>
+			<groupId>org.jboss.ironjacamar</groupId>
+			<artifactId>ironjacamar-embedded</artifactId>
+			<version>1.0.26.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.logging</groupId>
+			<artifactId>jboss-logging</artifactId>
+			<version>3.1.4.GA</version>
+		</dependency>
+	-->
+		
+		
+	</dependencies>
+
+	<build>
+		<finalName>${artifactId}</finalName>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.1</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+		</plugins>
+
+	</build>
+
+</project>
