@@ -14,23 +14,36 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<teiid.version>8.11.0.Alpha2-SNAPSHOT</teiid.version>
+		<teiid.version>8.11.0.Alpha3-SNAPSHOT</teiid.version>
+		<ironjacamar.version>1.2.4.Final</ironjacamar.version>
 	</properties>
 
 
 	<dependencies>
-	<!--  
+	  
 		<dependency>
 			<groupId>org.jboss.ironjacamar</groupId>
 			<artifactId>ironjacamar-embedded</artifactId>
-			<version>1.0.26.Final</version>
+			<version>${ironjacamar.version}</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.jboss.shrinkwrap.descriptors</groupId>
+			<artifactId>shrinkwrap-descriptors-api-base</artifactId>
+			<version>2.0.0-alpha-5</version>
+		</dependency>
+	<!--
 		<dependency>
 			<groupId>org.jboss.logging</groupId>
 			<artifactId>jboss-logging</artifactId>
 			<version>3.1.4.GA</version>
 		</dependency>
 	-->
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>1.4.181</version>
+		</dependency>
 		
 		
 	</dependencies>
