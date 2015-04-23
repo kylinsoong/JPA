@@ -2,6 +2,7 @@ package org.jboss.jca.embedded.example;
 
 import java.io.File;
 import java.net.URL;
+import java.sql.Connection;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -16,7 +17,7 @@ public class IronjacamarEmbeddedExample {
 		
 	public static void main(String[] args) throws Throwable {
 		
-		embedded = EmbeddedFactory.create();
+		embedded = EmbeddedFactory.create(true);
 		
 		embedded.startup();
 		
@@ -30,13 +31,18 @@ public class IronjacamarEmbeddedExample {
 			
 			context = new InitialContext();
 			DataSource dataSource = (DataSource) context.lookup("java:/H2DS");
-			System.out.println(dataSource.getConnection());
+			for(int i = 0 ; i < 10 ; i ++) {
+				Connection conn = dataSource.getConnection();
+				System.out.println(conn);
+				conn.close();
+			}
 		} finally {
 			embedded.undeploy(archive);
 			if (context != null) {
 				context.close();
 			}
 		}
+		
 				
 		embedded.shutdown();
 	}
