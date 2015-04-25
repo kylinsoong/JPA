@@ -1,11 +1,6 @@
 package narayana.example;
 
-import javax.transaction.HeuristicMixedException;
-import javax.transaction.HeuristicRollbackException;
-import javax.transaction.NotSupportedException;
-import javax.transaction.RollbackException;
-import javax.transaction.SystemException;
-import javax.transaction.UserTransaction;
+import java.io.File;
 
 import com.arjuna.ats.arjuna.common.ObjectStoreEnvironmentBean;
 import com.arjuna.ats.arjuna.common.arjPropertyManager;
@@ -23,20 +18,58 @@ public class VolatileStoreExample {
 	private static final String VOLATILE_STORE = com.arjuna.ats.internal.arjuna.objectstore.VolatileStore.class.getName();
 
 
-	public static void main(String[] args) throws NotSupportedException, SystemException, SecurityException, IllegalStateException, RollbackException, HeuristicMixedException, HeuristicRollbackException {
+	public static void main(String[] args) throws Exception {
 
+		setupStore();
+		
+		TransactionExample.main(new String[] {});
+	}
+
+
+	private static void setupStore() {
+		
 		arjPropertyManager.getObjectStoreEnvironmentBean().setObjectStoreType(VOLATILE_STORE);
 		
 		BeanPopulator.getNamedInstance(ObjectStoreEnvironmentBean.class, "default").setObjectStoreType(VOLATILE_STORE);
 		BeanPopulator.getNamedInstance(ObjectStoreEnvironmentBean.class, "communicationStore").setObjectStoreType(VOLATILE_STORE);
 		
+		emptyObjectStore();
+	}
 
-		UserTransaction utx = com.arjuna.ats.jta.UserTransaction.userTransaction();
+
+	private static void emptyObjectStore() {
 		
-		System.out.println(utx.getClass());
+		String objectStoreDirName = BeanPopulator.getDefaultInstance(ObjectStoreEnvironmentBean.class).getObjectStoreDir();
 		
-		utx.begin();
-		utx.commit();
+		if(objectStoreDirName != null) {
+			removeContents(new File(objectStoreDirName));
+		}
+	}
+
+
+	private static void removeContents(File directory) {
+
+		if ((directory != null) &&
+				directory.isDirectory() &&
+				(!directory.getName().equals("")) &&
+				(!directory.getName().equals("/")) &&
+				(!directory.getName().equals("\\")) &&
+				(!directory.getName().equals(".")) &&
+				(!directory.getName().equals("src/test"))) {
+			
+			File[] contents = directory.listFiles();
+			
+			for (File f : contents) {
+				if (f.isDirectory()){
+					removeContents(f);
+					f.delete();
+				}
+			}
+			
+			if(directory != null) {
+				directory.delete();
+			}
+		}
 	}
 
 }

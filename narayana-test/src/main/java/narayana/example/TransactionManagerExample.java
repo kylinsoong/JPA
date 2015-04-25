@@ -35,6 +35,7 @@ public class TransactionManagerExample {
 		
 		System.out.println(tm.getClass());
 		tm.begin();
+		System.out.println(tm.getTransaction().getClass());
 		System.out.println(tm.getTransaction());
 		tm.getTransaction().enlistResource(new XAResource(){
 
