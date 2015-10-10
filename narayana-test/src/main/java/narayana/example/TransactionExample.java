@@ -15,11 +15,11 @@ public class TransactionExample {
 				
 		TransactionExample example = new TransactionExample();
 		
-		example.commitUserTransaction();
+//		example.commitUserTransaction();
 		
-		example.commitTransactionManager();
+//		example.commitTransactionManager();
 		
-		example.rollbackUserTransaction();
+//		example.rollbackUserTransaction();
 		
 		example.setRollbackOnly();
 		
