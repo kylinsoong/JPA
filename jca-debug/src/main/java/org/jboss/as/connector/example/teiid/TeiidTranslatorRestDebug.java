@@ -24,7 +24,7 @@ import javax.xml.ws.Service.Mode;
 import javax.xml.ws.handler.MessageContext;
 import javax.xml.ws.http.HTTPBinding;
 
-import org.apache.commons.io.IOUtils;
+//import org.apache.commons.io.IOUtils;
 import org.apache.cxf.Bus;
 import org.apache.cxf.BusFactory;
 import org.apache.cxf.bus.spring.SpringBusFactory;
@@ -91,7 +91,7 @@ public class TeiidTranslatorRestDebug {
 
     private static String convertStreamToString(InputStream inputStream) throws IOException {
         StringWriter writer = new StringWriter();
-        IOUtils.copy(inputStream, writer);
+//        IOUtils.copy(inputStream, writer);
         return writer.toString();
     }
 
